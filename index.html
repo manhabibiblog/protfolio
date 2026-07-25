@@ -1,0 +1,1345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhabibi Company — Freelancer Portfolio Directory</title>
+    <style>
+        :root {
+            --bg: #0b0c10;
+            --surface: #15171e;
+            --surface2: #1c1f2a;
+            --gold: #d4a853;
+            --gold-light: #e8c97a;
+            --gold-dark: #b8922e;
+            --text: #e2e2e2;
+            --text-muted: #9a9fb0;
+            --border: #252836;
+            --accent: #c49b45;
+            --green: #3ebf8a;
+            --red: #e0556a;
+            --blue: #5b9bd5;
+            --purple: #9b7ed8;
+            --teal: #4db8b0;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image:
+                radial-gradient(ellipse at 20% 0%, rgba(212, 168, 83, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(212, 168, 83, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 50%, rgba(155, 126, 216, 0.03) 0%, transparent 70%);
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3d4a;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            gap: 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            box-shadow: 0 4px 16px rgba(212, 168, 83, 0.3);
+            transition: var(--transition);
+        }
+        .logo-area:hover .logo-icon {
+            transform: scale(1.06);
+            box-shadow: 0 6px 24px rgba(212, 168, 83, 0.45);
+        }
+        .logo-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .logo-text span {
+            color: var(--gold-light);
+            font-weight: 800;
+        }
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: block;
+            line-height: 1;
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-wrapper {
+            flex: 1;
+            max-width: 480px;
+            position: relative;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: var(--surface2);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            padding: 0 6px 0 20px;
+            transition: var(--transition);
+            gap: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .search-container:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.08), 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: #1f2230;
+        }
+        .search-icon {
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .search-container:focus-within .search-icon {
+            color: var(--gold-light);
+        }
+        .search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 0.95rem;
+            padding: 14px 0;
+            font-family: inherit;
+            letter-spacing: 0.2px;
+        }
+        .search-input::placeholder {
+            color: #5a5f70;
+            letter-spacing: 0.3px;
+        }
+        .search-clear {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .search-clear.visible {
+            display: flex;
+        }
+        .search-clear:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .search-btn {
+            background: var(--gold);
+            border: none;
+            color: #1a1a1a;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .search-btn:hover {
+            background: var(--gold-light);
+            box-shadow: 0 4px 18px rgba(212, 168, 83, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HEADER STATS ===== */
+        .header-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+        .header-stat {
+            text-align: center;
+            cursor: default;
+        }
+        .header-stat-val {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+        .header-stat-lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+        }
+
+        /* ===== FILTER SECTION ===== */
+        .filters-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.8rem;
+            align-items: center;
+        }
+        .filter-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            margin-right: 4px;
+            font-weight: 600;
+        }
+        .filter-chip {
+            padding: 9px 18px;
+            border-radius: 50px;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: inherit;
+            transition: var(--transition);
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+            user-select: none;
+        }
+        .filter-chip:hover {
+            border-color: #5a5f70;
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .filter-chip.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #1a1a1a;
+            font-weight: 700;
+            box-shadow: 0 2px 12px rgba(212, 168, 83, 0.3);
+        }
+        .results-count {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .results-count strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* ===== FREELANCER GRID ===== */
+        .freelancers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: var(--shadow-card);
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        .card:nth-child(1) {
+            animation-delay: 0.02s;
+        }
+        .card:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+        .card:nth-child(3) {
+            animation-delay: 0.1s;
+        }
+        .card:nth-child(4) {
+            animation-delay: 0.14s;
+        }
+        .card:nth-child(5) {
+            animation-delay: 0.18s;
+        }
+        .card:nth-child(6) {
+            animation-delay: 0.22s;
+        }
+        .card:nth-child(7) {
+            animation-delay: 0.26s;
+        }
+        .card:nth-child(8) {
+            animation-delay: 0.3s;
+        }
+        .card:nth-child(9) {
+            animation-delay: 0.34s;
+        }
+        .card:nth-child(10) {
+            animation-delay: 0.38s;
+        }
+        .card:nth-child(11) {
+            animation-delay: 0.42s;
+        }
+        .card:nth-child(12) {
+            animation-delay: 0.46s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold-dark));
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: 0 0 2px 2px;
+        }
+        .card:hover {
+            border-color: #3a3d4e;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            background: #191c27;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Card top row */
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: -0.3px;
+            background: var(--surface2);
+        }
+        .card:hover .avatar {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.12);
+        }
+        .online-dot {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid var(--surface);
+            background: var(--green);
+            transition: var(--transition);
+        }
+        .online-dot.offline {
+            background: #5a5f70;
+        }
+        .card:hover .online-dot {
+            border-color: #191c27;
+        }
+        .card-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: -0.2px;
+            line-height: 1.2;
+        }
+        .card-role {
+            font-size: 0.82rem;
+            color: var(--gold-light);
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+        .card-location {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Skills tags */
+        .skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+        .skill-tag {
+            font-size: 0.73rem;
+            padding: 5px 11px;
+            border-radius: 50px;
+            background: var(--surface2);
+            color: #b0b6c4;
+            letter-spacing: 0.2px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .card:hover .skill-tag {
+            border-color: #2e3140;
+        }
+        .skill-tag.highlight {
+            background: rgba(212, 168, 83, 0.12);
+            color: var(--gold-light);
+            border-color: rgba(212, 168, 83, 0.25);
+            font-weight: 600;
+        }
+
+        /* Stats row */
+        .card-stats {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .card-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .card-stat strong {
+            color: #ddd;
+            font-weight: 600;
+        }
+        .card-stat .star {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* Bottom row */
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+        .rate-badge {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+        .rate-badge span {
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .view-btn {
+            padding: 9px 18px;
+            border-radius: 50px;
+            border: 1.5px solid var(--gold);
+            background: transparent;
+            color: var(--gold-light);
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .view-btn:hover {
+            background: var(--gold);
+            color: #1a1a1a;
+            box-shadow: 0 4px 16px rgba(212, 168, 83, 0.35);
+        }
+
+        /* ===== NO RESULTS ===== */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        .no-results h3 {
+            font-size: 1.4rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== MODAL OVERLAY ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 1.5rem;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            box-shadow: var(--shadow);
+            transform: translateY(30px) scale(0.96);
+            transition: transform 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--surface2);
+            border: none;
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 5;
+        }
+        .modal-close:hover {
+            background: #2a2d3a;
+            color: var(--gold-light);
+        }
+        .modal-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 2rem;
+            color: #fff;
+            background: var(--surface2);
+            box-shadow: 0 0 0 12px rgba(212, 168, 83, 0.1);
+        }
+        .modal-name {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #fff;
+        }
+        .modal-role {
+            text-align: center;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .modal-location {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+        .modal-bio {
+            text-align: center;
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .modal-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .modal-stat {
+            text-align: center;
+        }
+        .modal-stat-val {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+        .modal-stat-lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .modal-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-contact {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .modal-contact-btn {
+            padding: 11px 24px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: #1a1a1a;
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            box-shadow: 0 6px 20px rgba(212, 168, 83, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: #ccc;
+        }
+        .btn-outline:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .header-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 0.8rem 0;
+                gap: 0.8rem;
+            }
+            .search-wrapper {
+                order: 3;
+                max-width: 100%;
+                flex: 100%;
+            }
+            .header-stats {
+                gap: 1rem;
+            }
+            .header-stat-val {
+                font-size: 0.9rem;
+            }
+            .freelancers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 1rem;
+            }
+            .main-container {
+                padding: 1rem 1rem 2rem;
+            }
+            .header {
+                padding: 0 1rem;
+            }
+            .filters-section {
+                gap: 7px;
+            }
+            .filter-chip {
+                padding: 7px 13px;
+                font-size: 0.78rem;
+            }
+            .modal {
+                padding: 1.8rem;
+                max-width: 95vw;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+                border-radius: 10px;
+            }
+            .header-stats {
+                display: none;
+            }
+            .freelancers-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .search-btn {
+                padding: 10px 14px;
+                font-size: 0.78rem;
+            }
+            .results-count {
+                margin-left: 0;
+                width: 100%;
+                text-align: left;
+            }
+            .filters-section {
+                gap: 5px;
+            }
+            .filter-chip {
+                padding: 6px 10px;
+                font-size: 0.72rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a class="logo-area" href="#" title="Manhabibi Company">
+                <div class="logo-icon">M</div>
+                <div>
+                    <span class="logo-text">Man<span>habibi</span></span>
+                    <span class="logo-sub">Freelancer Network</span>
+                </div>
+            </a>
+
+            <!-- Search -->
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search freelancers by name, skill, or role..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" title="Clear search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <button class="search-btn" id="searchBtn">Find</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-val" id="totalFreelancers">12</div>
+                    <div class="header-stat-lbl">Creatives</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-val">4.8</div>
+                    <div class="header-stat-lbl">Avg Rating</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-val">89+</div>
+                    <div class="header-stat-lbl">Projects</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main-container">
+        <!-- Filter Chips -->
+        <div class="filters-section" id="filtersSection">
+            <span class="filter-label">Filter:</span>
+            <button class="filter-chip active" data-filter="all">All Talents</button>
+            <button class="filter-chip" data-filter="developer">🖥 Developers</button>
+            <button class="filter-chip" data-filter="designer">🎨 Designers</button>
+            <button class="filter-chip" data-filter="writer">✍️ Writers</button>
+            <button class="filter-chip" data-filter="marketer">📈 Marketers</button>
+            <button class="filter-chip" data-filter="video">🎬 Video</button>
+            <span class="results-count" id="resultsCount">Showing <strong>12</strong> freelancers</span>
+        </div>
+
+        <!-- Freelancers Grid -->
+        <div class="freelancers-grid" id="freelancersGrid">
+            <!-- Cards injected by JS -->
+        </div>
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div id="modalInner">
+                <!-- dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ===== FREELANCER DATA =====
+            const freelancers = [{
+                id: 1,
+                name: 'Amir Khalid',
+                role: 'Senior Full-Stack Developer',
+                location: 'Dubai, UAE',
+                avatarBg: '#3b5998',
+                initials: 'AK',
+                online: true,
+                skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
+                highlightSkill: 'React',
+                rating: 4.9,
+                projects: 47,
+                experience: '8 years',
+                rate: '$85',
+                bio: 'Full-stack engineer with 8+ years building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring junior developers. Worked with Fortune 500 companies and fast-growing startups across the MENA region.',
+                category: 'developer',
+                socialLinks: { portfolio: '#', github: '#', linkedin: '#' }
+            }, {
+                id: 2,
+                name: 'Layla Noor',
+                role: 'UI/UX Designer & Brand Strategist',
+                location: 'Beirut, Lebanon',
+                avatarBg: '#e0556a',
+                initials: 'LN',
+                online: true,
+                skills: ['Figma', 'Design Systems', 'Branding', 'User Research', 'Prototyping'],
+                highlightSkill: 'Figma',
+                rating: 4.8,
+                projects: 35,
+                experience: '6 years',
+                rate: '$70',
+                bio: 'Award-winning designer crafting delightful digital experiences. Specialized in creating cohesive design systems and brand identities that resonate. Helped 20+ startups launch their MVPs with user-centric design.',
+                category: 'designer',
+                socialLinks: { portfolio: '#', dribbble: '#', linkedin: '#' }
+            }, {
+                id: 3,
+                name: 'Tariq Mansour',
+                role: 'Creative Copywriter & Content Strategist',
+                location: 'Cairo, Egypt',
+                avatarBg: '#4db8b0',
+                initials: 'TM',
+                online: false,
+                skills: ['Copywriting', 'SEO Content', 'Storytelling', 'Email Campaigns', 'Scriptwriting'],
+                highlightSkill: 'Copywriting',
+                rating: 4.7,
+                projects: 62,
+                experience: '5 years',
+                rate: '$55',
+                bio: 'Wordsmith with a knack for turning ideas into compelling narratives. Crafted content for major brands in tech, lifestyle, and e-commerce. SEO-savvy and data-driven in approach.',
+                category: 'writer',
+                socialLinks: { portfolio: '#', medium: '#', linkedin: '#' }
+            }, {
+                id: 4,
+                name: 'Sofia Rahman',
+                role: 'Digital Marketing & Growth Hacker',
+                location: 'Riyadh, KSA',
+                avatarBg: '#9b7ed8',
+                initials: 'SR',
+                online: true,
+                skills: ['Growth Hacking', 'PPC', 'Social Media', 'Analytics', 'Email Marketing'],
+                highlightSkill: 'Growth Hacking',
+                rating: 4.9,
+                projects: 53,
+                experience: '7 years',
+                rate: '$75',
+                bio: 'Data-obsessed growth marketer who has scaled campaigns to 7-figure revenues. Expert in paid acquisition, conversion optimization, and building viral loops. ROI is my middle name.',
+                category: 'marketer',
+                socialLinks: { portfolio: '#', twitter: '#', linkedin: '#' }
+            }, {
+                id: 5,
+                name: 'Omar Ziad',
+                role: 'Mobile App Developer (iOS & Android)',
+                location: 'Amman, Jordan',
+                avatarBg: '#5b9bd5',
+                initials: 'OZ',
+                online: true,
+                skills: ['Swift', 'Kotlin', 'Flutter', 'Firebase', 'App Store Optimization'],
+                highlightSkill: 'Flutter',
+                rating: 4.6,
+                projects: 28,
+                experience: '4 years',
+                rate: '$65',
+                bio: 'Cross-platform mobile developer building pixel-perfect apps. Proficient in native and Flutter development. Published 15+ apps on App Store and Google Play with 4.5+ star ratings.',
+                category: 'developer',
+                socialLinks: { portfolio: '#', github: '#', linkedin: '#' }
+            }, {
+                id: 6,
+                name: 'Nadia El-Amin',
+                role: 'Video Editor & Motion Graphics Artist',
+                location: 'Casablanca, Morocco',
+                avatarBg: '#d4a853',
+                initials: 'NE',
+                online: false,
+                skills: ['Premiere Pro', 'After Effects', 'Color Grading', 'Motion Design', 'Sound Design'],
+                highlightSkill: 'After Effects',
+                rating: 4.8,
+                projects: 41,
+                experience: '6 years',
+                rate: '$60',
+                bio: 'Visual storyteller transforming raw footage into cinematic masterpieces. Worked with top YouTube creators and commercial brands. Fast turnaround without compromising quality.',
+                category: 'video',
+                socialLinks: { portfolio: '#', youtube: '#', linkedin: '#' }
+            }, {
+                id: 7,
+                name: 'Karim Haddad',
+                role: 'Backend Engineer & DevOps Specialist',
+                location: 'Istanbul, Turkey',
+                avatarBg: '#3ebf8a',
+                initials: 'KH',
+                online: true,
+                skills: ['Python', 'Docker', 'Kubernetes', 'Go', 'Microservices'],
+                highlightSkill: 'Kubernetes',
+                rating: 4.9,
+                projects: 39,
+                experience: '9 years',
+                rate: '$95',
+                bio: 'Infrastructure wizard building resilient distributed systems. Expert in cloud-native architectures, CI/CD pipelines, and zero-downtime deployments. AWS & GCP certified.',
+                category: 'developer',
+                socialLinks: { portfolio: '#', github: '#', linkedin: '#' }
+            }, {
+                id: 8,
+                name: 'Yasmine Fathi',
+                role: 'Illustrator & Visual Artist',
+                location: 'Alexandria, Egypt',
+                avatarBg: '#e8915c',
+                initials: 'YF',
+                online: true,
+                skills: ['Illustration', 'Procreate', 'Adobe Illustrator', 'Character Design', 'NFT Art'],
+                highlightSkill: 'Illustration',
+                rating: 4.7,
+                projects: 55,
+                experience: '5 years',
+                rate: '$50',
+                bio: 'Whimsical illustrator bringing brands to life with unique hand-drawn aesthetics. Created illustrations for children\'s books, tech startups, and NFT collections.',
+                category: 'designer',
+                socialLinks: { portfolio: '#', instagram: '#', linkedin: '#' }
+            }, {
+                id: 9,
+                name: 'Rashid Al-Mutawa',
+                role: 'SEO & Content Marketing Expert',
+                location: 'Kuwait City, Kuwait',
+                avatarBg: '#6c8ebf',
+                initials: 'RA',
+                online: false,
+                skills: ['SEO', 'Content Strategy', 'Keyword Research', 'Link Building', 'SEMrush'],
+                highlightSkill: 'SEO',
+                rating: 4.6,
+                projects: 44,
+                experience: '7 years',
+                rate: '$58',
+                bio: 'SEO strategist who has propelled websites to page-one rankings in competitive niches. Deep understanding of Google algorithms and content ecosystems.',
+                category: 'writer',
+                socialLinks: { portfolio: '#', twitter: '#', linkedin: '#' }
+            }, {
+                id: 10,
+                name: 'Hana Saeed',
+                role: 'Social Media Manager & Influencer Strategist',
+                location: 'Abu Dhabi, UAE',
+                avatarBg: '#c94d7c',
+                initials: 'HS',
+                online: true,
+                skills: ['Social Media', 'Influencer Marketing', 'Content Creation', 'Community', 'TikTok'],
+                highlightSkill: 'TikTok',
+                rating: 4.8,
+                projects: 37,
+                experience: '4 years',
+                rate: '$62',
+                bio: 'Social media maven building engaged communities from scratch. Managed accounts with 500K+ followers. Trend-spotter and viral content creator.',
+                category: 'marketer',
+                socialLinks: { portfolio: '#', instagram: '#', linkedin: '#' }
+            }, {
+                id: 11,
+                name: 'Zain Al-Abidin',
+                role: '3D Animator & VFX Artist',
+                location: 'Doha, Qatar',
+                avatarBg: '#4a3f8a',
+                initials: 'ZA',
+                online: false,
+                skills: ['Blender', 'Cinema 4D', 'VFX', '3D Modeling', 'Unreal Engine'],
+                highlightSkill: 'Blender',
+                rating: 4.9,
+                projects: 23,
+                experience: '6 years',
+                rate: '$80',
+                bio: '3D generalist creating stunning visuals for games, film, and advertising. Proficient in the entire 3D pipeline from modeling to final render.',
+                category: 'video',
+                socialLinks: { portfolio: '#', artstation: '#', linkedin: '#' }
+            }, {
+                id: 12,
+                name: 'Mona Al-Farsi',
+                role: 'Product Designer & UX Researcher',
+                location: 'Muscat, Oman',
+                avatarBg: '#2e8b7a',
+                initials: 'MA',
+                online: true,
+                skills: ['UX Research', 'Wireframing', 'Usability Testing', 'Figma', 'Design Thinking'],
+                highlightSkill: 'UX Research',
+                rating: 4.8,
+                projects: 31,
+                experience: '5 years',
+                rate: '$68',
+                bio: 'Human-centered designer who bridges the gap between user needs and business goals. Conducted 100+ user interviews and transformed insights into impactful product features.',
+                category: 'designer',
+                socialLinks: { portfolio: '#', dribbble: '#', linkedin: '#' }
+            }];
+
+            // ===== DOM REFS =====
+            const grid = document.getElementById('freelancersGrid');
+            const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            const searchBtn = document.getElementById('searchBtn');
+            const resultsCount = document.getElementById('resultsCount');
+            const totalFreelancersEl = document.getElementById('totalFreelancers');
+            const filterChips = document.querySelectorAll('.filter-chip');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalInner = document.getElementById('modalInner');
+            const modalClose = document.getElementById('modalClose');
+
+            let activeFilter = 'all';
+            let searchQuery = '';
+
+            // ===== AVATAR COLOR GENERATOR =====
+            function getAvatarStyle(freelancer) {
+                return `background: ${freelancer.avatarBg};`;
+            }
+
+            // ===== RENDER STARS =====
+            function renderStars(rating) {
+                const full = Math.floor(rating);
+                const half = rating - full >= 0.5 ? 1 : 0;
+                const empty = 5 - full - half;
+                let html = '';
+                for (let i = 0; i < full; i++) html += '<span class="star">★</span>';
+                if (half) html += '<span class="star" style="opacity:0.5;">★</span>';
+                for (let i = 0; i < empty; i++)
+                    html += '<span class="star" style="opacity:0.2;">★</span>';
+                return html;
+            }
+
+            // ===== RENDER CARD =====
+            function renderCard(f) {
+                const skillTags = f.skills.map(skill => {
+                    const isHighlight = skill === f.highlightSkill;
+                    return `<span class="skill-tag${isHighlight ? ' highlight' : ''}">${skill}</span>`;
+                }).join('');
+
+                return `
+                <div class="card" data-id="${f.id}" data-category="${f.category}" data-name="${f.name.toLowerCase()}" data-skills="${f.skills.join(',').toLowerCase()}" data-role="${f.role.toLowerCase()}">
+                    <div class="card-top">
+                        <div class="avatar-wrapper">
+                            <div class="avatar" style="${getAvatarStyle(f)}">${f.initials}</div>
+                            <div class="online-dot${f.online ? '' : ' offline'}" title="${f.online ? 'Available' : 'Offline'}"></div>
+                        </div>
+                        <div>
+                            <div class="card-name">${f.name}</div>
+                            <div class="card-role">${f.role}</div>
+                            <div class="card-location">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                ${f.location}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-row">${skillTags}</div>
+                    <div class="card-stats">
+                        <div class="card-stat">${renderStars(f.rating)} <strong>${f.rating}</strong></div>
+                        <div class="card-stat">📁 <strong>${f.projects}</strong> projects</div>
+                        <div class="card-stat">⏳ ${f.experience}</div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="rate-badge">${f.rate}<span>/hr</span></div>
+                        <button class="view-btn" data-id="${f.id}">View Profile</button>
+                    </div>
+                </div>`;
+            }
+
+            // ===== RENDER ALL CARDS =====
+            function renderAllCards(data) {
+                grid.innerHTML = '';
+                if (data.length === 0) {
+                    grid.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>No freelancers found</h3>
+                        <p>Try adjusting your search or filters to discover talent.</p>
+                    </div>`;
+                } else {
+                    data.forEach(f => {
+                        grid.innerHTML += renderCard(f);
+                    });
+                }
+                // Update counts
+                resultsCount.innerHTML = `Showing <strong>${data.length}</strong> freelancer${data.length !== 1 ? 's' : ''}`;
+                totalFreelancersEl.textContent = data.length;
+            }
+
+            // ===== FILTER & SEARCH LOGIC =====
+            function getFilteredData() {
+                let data = freelancers;
+                // Category filter
+                if (activeFilter !== 'all') {
+                    data = data.filter(f => f.category === activeFilter);
+                }
+                // Search query
+                if (searchQuery.trim()) {
+                    const q = searchQuery.trim().toLowerCase();
+                    data = data.filter(f => {
+                        return (
+                            f.name.toLowerCase().includes(q) ||
+                            f.role.toLowerCase().includes(q) ||
+                            f.skills.some(s => s.toLowerCase().includes(q)) ||
+                            f.location.toLowerCase().includes(q) ||
+                            f.category.toLowerCase().includes(q)
+                        );
+                    });
+                }
+                return data;
+            }
+
+            function updateDisplay() {
+                const filtered = getFilteredData();
+                renderAllCards(filtered);
+                // Re-attach card click & view button listeners
+                attachCardListeners();
+            }
+
+            // ===== ATTACH LISTENERS TO CARDS =====
+            function attachCardListeners() {
+                // View profile buttons
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const id = parseInt(btn.dataset.id);
+                        openModal(id);
+                    });
+                });
+                // Entire card click
+                document.querySelectorAll('.card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const id = parseInt(card.dataset.id);
+                        openModal(id);
+                    });
+                });
+            }
+
+            // ===== MODAL =====
+            function openModal(id) {
+                const f = freelancers.find(fr => fr.id === id);
+                if (!f) return;
+                const skillTags = f.skills.map(s =>
+                    `<span class="skill-tag highlight">${s}</span>`
+                ).join('');
+                modalInner.innerHTML = `
+                <div class="modal-avatar" style="${getAvatarStyle(f)}">${f.initials}</div>
+                <div class="modal-name">${f.name}</div>
+                <div class="modal-role">${f.role}</div>
+                <div class="modal-location">📍 ${f.location}  ·  ${f.online ? '🟢 Available Now' : '⚫ Currently Offline'}</div>
+                <p class="modal-bio">${f.bio}</p>
+                <div class="modal-stats-row">
+                    <div class="modal-stat">
+                        <div class="modal-stat-val">${f.rating} ★</div>
+                        <div class="modal-stat-lbl">Rating</div>
+                    </div>
+                    <div class="modal-stat">
+                        <div class="modal-stat-val">${f.projects}</div>
+                        <div class="modal-stat-lbl">Projects</div>
+                    </div>
+                    <div class="modal-stat">
+                        <div class="modal-stat-val">${f.experience}</div>
+                        <div class="modal-stat-lbl">Experience</div>
+                    </div>
+                    <div class="modal-stat">
+                        <div class="modal-stat-val">${f.rate}<span style="font-size:0.7rem;color:#9a9fb0;">/hr</span></div>
+                        <div class="modal-stat-lbl">Rate</div>
+                    </div>
+                </div>
+                <div class="modal-skills">${skillTags}</div>
+                <div class="modal-contact">
+                    <button class="modal-contact-btn btn-primary">📩 Contact ${f.name.split(' ')[0]}</button>
+                    <button class="modal-contact-btn btn-outline">🔗 View Portfolio</button>
+                </div>`;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // ===== SEARCH EVENTS =====
+            searchInput.addEventListener('input', () => {
+                searchQuery = searchInput.value;
+                if (searchQuery.trim()) {
+                    searchClear.classList.add('visible');
+                } else {
+                    searchClear.classList.remove('visible');
+                }
+                updateDisplay();
+            });
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchQuery = '';
+                searchClear.classList.remove('visible');
+                updateDisplay();
+                searchInput.focus();
+            });
+            searchBtn.addEventListener('click', () => {
+                updateDisplay();
+                // Scroll to grid
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            // Enter key
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    updateDisplay();
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            // ===== FILTER CHIPS =====
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    activeFilter = chip.dataset.filter;
+                    updateDisplay();
+                });
+            });
+
+            // ===== INITIAL RENDER =====
+            renderAllCards(freelancers);
+            attachCardListeners();
+            totalFreelancersEl.textContent = freelancers.length;
+
+            console.log('✨ Manhabibi Company — Freelancer Portfolio Directory Ready');
+            console.log(`   ${freelancers.length} talented freelancers loaded | Search & filters active`);
+        })();
+    </script>
+</body>
+</html>
